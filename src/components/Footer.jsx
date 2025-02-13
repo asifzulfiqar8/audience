@@ -84,7 +84,12 @@ const Footer = () => {
             </div>
             <div className="mt-10 flex flex-col gap-8 md:gap-9">
               {pagesLinks.map((link, i) => (
-                <LinkList link={link} key={i} path={path} />
+                <LinkList
+                  link={link}
+                  key={i}
+                  path={path}
+                  setNavOpen={setNavOpen}
+                />
               ))}
             </div>
           </div>
@@ -111,13 +116,14 @@ const Footer = () => {
 
 export default Footer;
 
-const LinkList = ({ link, path }) => {
+const LinkList = ({ link, path, setNavOpen }) => {
   return (
     <Link
       href={link.url}
       className={`flex items-center justify-between text-white text-xs md:text-lg font-bold py-1 font-noka ${
         path === link.url ? "border-b-[0.5px] border-[#ffffffc4]" : ""
       }`}
+      onClick={() => setNavOpen(false)}
     >
       {link.page}
       <LinkIcon />
